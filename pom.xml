@@ -12,6 +12,7 @@
         <module>stack</module>
         <module>queue</module>
         <module>heap</module>
+        <module>fenwick-tree</module>
     </modules>
 
     <properties>
