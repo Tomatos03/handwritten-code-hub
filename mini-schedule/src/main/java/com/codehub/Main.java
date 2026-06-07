@@ -2,6 +2,7 @@ package com.codehub;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -12,15 +13,19 @@ import java.time.format.DateTimeFormatter;
 public class Main {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ScheduleService scheduleService = new ScheduleService();
+        Runnable task1 = () -> System.out.printf("[%s]: first task\n", LocalDateTime.now().format(FORMATTER));
         scheduleService.execute(
-                () -> System.out.printf("[%s]: first task\n", LocalDateTime.now().format(FORMATTER)),
-                500)
-        ;
+                task1,
+                500
+        );
+        Runnable task2 = () -> System.out.printf("[%s] : second task\n",  LocalDateTime.now().format(FORMATTER));
         scheduleService.execute(
-                () -> System.out.printf("[%s] : second task\n",  LocalDateTime.now().format(FORMATTER)),
+                task2,
                 300
         );
+        TimeUnit.SECONDS.sleep(3);
+        scheduleService.stop(task1);
     }
 }

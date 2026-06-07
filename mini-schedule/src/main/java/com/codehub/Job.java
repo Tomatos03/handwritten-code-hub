@@ -9,14 +9,36 @@ package com.codehub;
 public class Job implements Comparable<Job> {
     private long startTime;
     private Runnable runnable;
-    private long dealy;
+    private long delay;
+    private volatile boolean isInterrupted = false;
+    private String name;
 
-    public long getDealy() {
-        return dealy;
+    public Job(String name) {
+        this.name = name;
     }
 
-    public void setDealy(long dealy) {
-        this.dealy = dealy;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getDelay() {
+        return delay;
+    }
+
+    public boolean isInterrupted() {
+        return isInterrupted;
+    }
+
+    public void setInterrupted(boolean interrupted) {
+        isInterrupted = interrupted;
+    }
+
+    public void setDelay(long delay) {
+        this.delay = delay;
     }
 
     public long getStartTime() {
