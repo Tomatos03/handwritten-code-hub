@@ -13,6 +13,7 @@
         <module>queue</module>
         <module>heap</module>
         <module>fenwick-tree</module>
+        <module>mini-schedule</module>
     </modules>
 
     <properties>
