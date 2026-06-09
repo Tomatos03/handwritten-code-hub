@@ -15,6 +15,7 @@
         <module>fenwick-tree</module>
         <module>mini-schedule</module>
         <module>socket-io</module>
+        <module>nio-echo-server</module>
     </modules>
 
     <properties>
