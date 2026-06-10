@@ -16,6 +16,7 @@
         <module>mini-schedule</module>
         <module>socket-io</module>
         <module>nio-echo-server</module>
+        <module>sparse-table</module>
     </modules>
 
     <properties>

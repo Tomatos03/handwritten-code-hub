@@ -40,3 +40,6 @@ build/
 
 ### complied file ###
 target/
+
+.claude
+.mimocode
