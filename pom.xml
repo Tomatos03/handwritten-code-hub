@@ -17,6 +17,7 @@
         <module>socket-io</module>
         <module>nio-echo-server</module>
         <module>sparse-table</module>
+        <module>segment-tree</module>
     </modules>
 
     <properties>
