@@ -18,6 +18,8 @@
         <module>nio-echo-server</module>
         <module>sparse-table</module>
         <module>segment-tree</module>
+        <module>netty-chatroom</module>
+        <module>binary-search-tree</module>
     </modules>
 
     <properties>
