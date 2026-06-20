@@ -20,19 +20,17 @@ import java.util.Set;
  * @date : 2026/6/9
  */
 public class NIOServer {
-    private static final int PORT = 3333;
-    private static final String FIXED_RESPONSE_CONTENT = "Hello Client!";
 
     public static void main(String[] args) throws IOException {
         try(
                 ServerSocketChannel serverChannel = ServerSocketChannel
                         .open()
-                        .bind(new InetSocketAddress(PORT));
+                        .bind(new InetSocketAddress(EchoConstants.PORT));
                 Selector selector = Selector.open();
         ) {
             serverChannel.configureBlocking(false);
             serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-            System.out.printf("开始监听端口:[%s]%n", PORT);
+            System.out.printf("开始监听端口:[%s]%n", EchoConstants.PORT);
 
             while (true) {
                 // 阻塞当前线程，直到至少有一个通道的事件就绪
@@ -60,7 +58,7 @@ public class NIOServer {
 
     private static void responseClient(SelectionKey key) throws IOException {
         SocketChannel channel = (SocketChannel) key.channel();
-        channel.write(ByteBuffer.wrap(FIXED_RESPONSE_CONTENT.getBytes()));
+        channel.write(ByteBuffer.wrap(EchoConstants.FIXED_RESPONSE_CONTENT.getBytes()));
     }
 
     private static boolean handleRead(SelectionKey key) throws IOException {

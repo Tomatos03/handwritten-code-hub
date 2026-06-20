@@ -8,16 +8,13 @@ import java.nio.channels.SocketChannel;
 import java.util.Scanner;
 
 public class NIOClient {
-    private static final int PORT = 3333;
-    private static final String EXIT_FLAG = "exit";
-    private static final String LOCAL_ADDRESS = "127.0.0.1";
 
     public static void main(String[] args) throws IOException {
         try (
                 Scanner scanner = new Scanner(System.in);
                 SocketChannel channel = SocketChannel.open()
         ) {
-            boolean isConnected = channel.connect(new InetSocketAddress(LOCAL_ADDRESS, PORT));
+            boolean isConnected = channel.connect(new InetSocketAddress(EchoConstants.LOCAL_ADDRESS, EchoConstants.PORT));
             if (!isConnected) {
                 System.out.println("连接服务器失败");
                 System.exit(-1);
@@ -54,6 +51,6 @@ public class NIOClient {
     }
 
     private static boolean shouldExit(String content) {
-        return content.equalsIgnoreCase(EXIT_FLAG);
+        return content.equalsIgnoreCase(EchoConstants.EXIT_FLAG);
     }
 }

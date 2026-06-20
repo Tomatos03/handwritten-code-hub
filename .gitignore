@@ -41,5 +41,6 @@ build/
 ### complied file ###
 target/
 
-.claude
+### Agent File ###
 .mimocode
+.claude
